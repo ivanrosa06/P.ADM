@@ -194,7 +194,7 @@ namespace PROJECTADM.Controllers
 
 
             ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Reporte"), "OrdenCompraFactura.rpt"));
+            rd.Load(Path.Combine(Server.MapPath("~/Reporte"), "OrdenesCompraFactura.rpt"));
 
             var lista = from data in db.proveedores
 
