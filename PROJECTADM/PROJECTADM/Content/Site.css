@@ -1,0 +1,262 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.search-expand,
+#nav-topbar.nav-container {
+    background-color: #82b965;
+}
+
+@media only screen and (min-width: 720px) {
+
+    #nav-topbar .nav ul {
+        background-color: #82b965;
+    }
+}
+
+
+
+
+#header {
+    background-color: #f0f0f0;
+}
+
+@media only screen and (min-width: 720px) {
+
+    #nav-header .nav ul {
+        background-color: #f0f0f0;
+    }
+}
+
+
+#footer-bottom {
+    background-color: #222222;
+}
+
+.site-title a img {
+    max-height: 100px;
+}
+
+img {
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+body {
+    background: #3b8dbd url(#);
+    background-size: #;
+}
+.main2 {
+    width: 100%;
+    padding: 20px;
+    margin: 0px;
+    left: 0px;
+}
+.container-inner2 {
+    width: 100%
+}
+.btn2 {
+    color: #fff;
+    padding: 11px 16px;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    /* -webkit-border-radius: 3px; */
+    /* border-radius: 3px; */
+    margin-left: -35px;
+}
+
+
+
+.social-sharing {
+    display: block;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+    .social-sharing ul.menu-social {
+        list-style: none;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-wrap: nowrap;
+        -ms-flex-wrap: nowrapwrap;
+        flex-wrap: nowrap;
+    }
+
+        .social-sharing ul.menu-social li {
+            flex: 0 1 40px;
+            height: 40px;
+        }
+
+            .social-sharing ul.menu-social li.newsletter {
+                flex: 1 1 auto;
+                line-height: 40px;
+                position: relative;
+                background-color: #fafafa;
+                background-image: repeating-linear-gradient(135deg, #ffe4e1 0px, #ffe4e1 5px, transparent 5px, transparent 10px, #e1f3ff 10px, #e1f3ff 15px, transparent 15px, transparent 20px);
+            }
+
+            .social-sharing ul.menu-social li.next {
+                flex: 1 1 auto;
+            }
+ul.menu-social li a::before {
+    content: "\f135";
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: 20px;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 40px;
+}
+
+ul.menu-social li a[href*="facebook.com"]::before {
+    content: "\f09a";
+}
+
+ul.menu-social li a[href*="twitter.com"]::before {
+    content: "\f099";
+}
+
+ul.menu-social li a[href*="pinterest.com"]::before {
+    content: "\f231";
+}
+
+ul.menu-social li a[href*="whatsapp://send"]::before {
+    content: "\f232";
+}
+
+
+
+
+
+
+
+
+.shared-panel {
+    overflow: auto;
+}
+
+    .shared-panel span {
+        margin: 10px 0;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+.shared {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 5px 0;
+    padding: 0;
+    /* Recurso incluido en la descarga del ejemplo */
+    background: url("shared.png") no-repeat;
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+    .shared:hover {
+        opacity: 0.7;
+    }
+
+    .shared.gp {
+        background-position: 0px 0px;
+        background-color: #E62B34;
+    }
+
+    .shared.tt {
+        background-position: 0px -30px;
+        background-color: #43BDF0;
+    }
+
+    .shared.ce {
+        background-position: 0px -60px;
+        background-color: #8A898D;
+    }
+
+    .shared.wa {
+        background-position: 0px -90px;
+        background-color: #0dc143;
+    }
+
+    .shared.fb {
+        background-position: 0px -120px;
+        background-color: #6081C4;
+    }
+
+.st2 {
+    border-radius: 0;
+}
+
+.st3 {
+    border-radius: 5px;
+}
+
+.jumbotron {
+    background: url(https://i.pinimg.com/originals/12/9d/af/129dafe2caf8b9e1fb312c0a3e97456a.jpg);
+}
+    .jumbotron h1{
+        color: azure;
+    }
+    .jumbotron p {
+        color: azure;
+    }
+
+.login {
+    margin: 0px auto;
+    padding: 30px;
+    text-align:;
+    border-radius: 10px;
+    border: 1px solid #666666;
+    width: 600px;
+    background: url(https://i.pinimg.com/originals/12/9d/af/129dafe2caf8b9e1fb312c0a3e97456a.jpg);
+}
+.textLogin {
+    left: 500px;
+    text-align:center;
+    color:azure;
+}
+.textLogin h4 {
+   
+    color: azure;
+}
+
+.check {
+    left: 20px;
+    color: azure;
+}
+.btnp {
+    left: 100px;
+}
+.lb {
+    color: azure;
+}

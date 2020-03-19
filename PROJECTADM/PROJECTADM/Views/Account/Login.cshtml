@@ -1,0 +1,63 @@
+﻿@using PROJECTADM.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+
+   
+        <section id="loginForm " class="">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal login ", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+            <div class="textLogin">
+                <h4 >Ingrese al sistema</h4>
+            </div >
+                
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group txtlogin">
+          
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label lb" })
+                <div class="col-md-10 txtlogin">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group ">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label lb" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox check">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 btnp">
+                    <input type="submit" value="Log in" class="btn btn-default " />
+                    @Html.ActionLink("Registrate", "Register", new { @class = "btn btn-default" })
+                </div>
+            </div>
+            <p>
+
+            </p>
+            @* Enable this once you have account confirmation enabled for password reset functionality
+        <p>
+            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+        </p>*@
+            }
+</section>
+    </div>
+    
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

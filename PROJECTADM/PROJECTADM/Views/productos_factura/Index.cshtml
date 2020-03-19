@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PROJECTADM.Models.productos_factura>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Agregar productos a la Factura</h2>
+<br />
+<br />
+<p>
+    @Html.ActionLink("Agregar", "Create", null, new { @class = "btn btn-danger" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.factura.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inventario.Marca)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.factura.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.inventario.Marca)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id_producto_factura }, new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.Id_producto_factura }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Imprimir", "ExportFactura", "facturas", null, new { @class = "btn btn-danger" })
+<input type="submit" value="Salir" class="btn btn-danger" />

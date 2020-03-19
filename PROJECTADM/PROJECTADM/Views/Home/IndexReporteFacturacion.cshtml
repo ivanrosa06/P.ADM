@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "IndexReporteFacturacion";
+}
+
+<h2>Facturacion</h2>
+<br />
+<table class="table">
+    <tr>
+        
+        <th>
+            <div class="form-group">
+                <h4>Reporte Clientes</h4>
+                <br />
+                <img src="~/images/074-search-job.png" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Imprimir Reporte", "ExportCliente", "clientes", null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+      
+        <th>
+            <div class="form-group">
+
+                <h4>Reporte Facturas</h4>
+                <br />
+                <img src="~/images/009-calculator.png" alt="Perfil" width="120" height="120" border="3" />
+
+                @Html.ActionLink("Imprimir", "ExportFacturacion", "facturas", null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+
+    </tr>
+</table>

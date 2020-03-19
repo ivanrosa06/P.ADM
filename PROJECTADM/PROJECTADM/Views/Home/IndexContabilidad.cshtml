@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "IndexContabilidad";
+}
+
+<h2>Contabilidad</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            <div class="form-group">
+                <h4>Ingresos</h4>
+                <br />
+                <img src="~/images/069-payment-method-4.png" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Consultar Ingresos", "IndexIngresos", "contabilidads",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+                <h4>Gastos</h4>
+                <br />
+                <img src="~/images/061-money-bag-2.png" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Consultar Gastos", "IndexGastos", "contabilidads",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+                <h4>Contabilidad</h4>
+                <br />
+                <img src="~/images/008-account.png"  alt="Perfil" width="120" height="120" border="3"/>
+                @Html.ActionLink("Contabilidad", "Index", "contabilidads",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th></th>
+    </tr>
+</table>
+
+

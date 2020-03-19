@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "IndexFacturacion";
+}
+
+<h2>Facturacion</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            <div class="form-group">
+                <h4>Registrar Cliente</h4>
+                <br />
+                <img src="~/images/034-human-resources-2.png" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Registrar", "Create", "clientes",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+                <h4>Consultar Clientes</h4>
+                <br />
+                <img src="~/images/074-search-job.png" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Consultar", "Index", "clientes",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+
+                <h4>Registrar Factura</h4>
+                <br />
+                <img src="~/images/011-cheque.png" alt="Perfil" width="120" height="120" border="3" />
+
+                @Html.ActionLink("Registrar", "Create", "facturas",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+
+                <h4>Consulta Factura</h4>
+                <br />
+                <img src="~/images/009-calculator.png" alt="Perfil" width="120" height="120" border="3" />
+
+                @Html.ActionLink("Consultar", "Index", "facturas",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+      
+    </tr>
+</table>

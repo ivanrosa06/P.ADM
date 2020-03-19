@@ -1,0 +1,42 @@
+﻿@model PROJECTADM.Models.contabilidad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>contabilidad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gastos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gastos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ingresos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ingresos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Contabilidad }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

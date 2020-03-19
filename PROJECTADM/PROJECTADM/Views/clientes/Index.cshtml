@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PROJECTADM.Models.cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<H4>Clientes</H4>
+<br />
+
+<p>
+    <a href="/clientes/Create" class="btn btn-danger">Crear Nuevo</a>
+</p>
+@using (Html.BeginForm("Index", "productos_Cotizaciones", FormMethod.Post))
+{
+
+    <div class="form-group pull-right">
+        @Html.Label("Buscar por nombre:", htmlAttributes: new { @class = "control-label col-md-4" })
+
+        @Html.Editor("busqueda1")
+        <input type="submit" value="Buscar" class="btn btn-danger" />
+
+        @*@Html.ValidationMessageFor(model => model.Año, "", new { @class = "text-danger" })*@
+
+
+    </div>
+}
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+
+                <button onclick="location.href='@Url.Action("Edit","clientes", new { id = item.Id_cliente })'" class="btn btn-danger">Editar</button>
+                <button onclick="location.href='@Url.Action("Details","clientes", new { id = item.Id_cliente })'" class="btn btn-danger">Detalles</button>
+                <button onclick="location.href='@Url.Action("Delete","clientes", new { id = item.Id_cliente })'" class="btn btn-danger">Borrar</button>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ADMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="Id_cliente" />
+          </Key>
+          <Property Name="Id_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" />
+          <Property Name="Cedula" Type="int" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="contabilidad">
+          <Key>
+            <PropertyRef Name="Id_Contabilidad" />
+          </Key>
+          <Property Name="Id_Contabilidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gastos" Type="int" />
+          <Property Name="Ingresos" Type="int" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="cotizaciones">
+          <Key>
+            <PropertyRef Name="Id_cotizacion" />
+          </Key>
+          <Property Name="Id_cotizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Monto" Type="int" />
+          <Property Name="Impuestos" Type="int" />
+          <Property Name="Monto_total" Type="int" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="Id_factura" />
+          </Key>
+          <Property Name="Id_factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_cliente" Type="int" />
+          <Property Name="monto" Type="int" />
+          <Property Name="impuesto" Type="int" />
+          <Property Name="Monto_total" Type="int" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="inventario">
+          <Key>
+            <PropertyRef Name="Id_inventario" />
+          </Key>
+          <Property Name="Id_inventario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Especificacion" Type="varchar" MaxLength="50" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="precio" Type="int" />
+        </EntityType>
+        <EntityType Name="ordenesCompras">
+          <Key>
+            <PropertyRef Name="Id_Orden_compra" />
+          </Key>
+          <Property Name="Id_Orden_compra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_proveedor" Type="int" />
+          <Property Name="Estado" Type="int" />
+          <Property Name="Monto" Type="varchar" MaxLength="50" />
+          <Property Name="Impuesto" Type="int" />
+          <Property Name="Monto_total" Type="int" />
+        </EntityType>
+        <EntityType Name="productos_Cotizaciones">
+          <Key>
+            <PropertyRef Name="Id_producto_cotizacion" />
+          </Key>
+          <Property Name="Id_producto_cotizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_inventario" Type="int" />
+          <Property Name="Id_cotizacion" Type="int" />
+          <Property Name="Cantidad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="productos_factura">
+          <Key>
+            <PropertyRef Name="Id_producto_factura" />
+          </Key>
+          <Property Name="Id_producto_factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_inventario" Type="int" />
+          <Property Name="Id_cotizacion" Type="int" />
+          <Property Name="Cantidad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="productos_OrdenesCompra">
+          <Key>
+            <PropertyRef Name="Id_producto_orden_compra" />
+          </Key>
+          <Property Name="Id_producto_orden_compra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_producto" Type="int" />
+          <Property Name="Id_ordenesDeCopras" Type="int" />
+          <Property Name="Cantidad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="Id_proveedor" />
+          </Key>
+          <Property Name="Id_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" />
+          <Property Name="RNC" Type="int" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="Cliente_Factura_FK">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="Id_cliente" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cotizacion_Cotizaciones_FK">
+          <End Role="cotizaciones" Type="Self.cotizaciones" Multiplicity="0..1" />
+          <End Role="productos_Cotizaciones" Type="Self.productos_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cotizaciones">
+              <PropertyRef Name="Id_cotizacion" />
+            </Principal>
+            <Dependent Role="productos_Cotizaciones">
+              <PropertyRef Name="Id_cotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Factura_factura_FK">
+          <End Role="factura" Type="Self.factura" Multiplicity="0..1" />
+          <End Role="productos_factura" Type="Self.productos_factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factura">
+              <PropertyRef Name="Id_factura" />
+            </Principal>
+            <Dependent Role="productos_factura">
+              <PropertyRef Name="Id_cotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ordenes_ordenescompras_FK">
+          <End Role="ordenesCompras" Type="Self.ordenesCompras" Multiplicity="0..1" />
+          <End Role="productos_OrdenesCompra" Type="Self.productos_OrdenesCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenesCompras">
+              <PropertyRef Name="Id_Orden_compra" />
+            </Principal>
+            <Dependent Role="productos_OrdenesCompra">
+              <PropertyRef Name="Id_ordenesDeCopras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_Cotizaciones_FK">
+          <End Role="inventario" Type="Self.inventario" Multiplicity="0..1" />
+          <End Role="productos_Cotizaciones" Type="Self.productos_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventario">
+              <PropertyRef Name="Id_inventario" />
+            </Principal>
+            <Dependent Role="productos_Cotizaciones">
+              <PropertyRef Name="Id_inventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_factura_FK">
+          <End Role="inventario" Type="Self.inventario" Multiplicity="0..1" />
+          <End Role="productos_factura" Type="Self.productos_factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventario">
+              <PropertyRef Name="Id_inventario" />
+            </Principal>
+            <Dependent Role="productos_factura">
+              <PropertyRef Name="Id_inventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_ordenescompras_FK">
+          <End Role="inventario" Type="Self.inventario" Multiplicity="0..1" />
+          <End Role="productos_OrdenesCompra" Type="Self.productos_OrdenesCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventario">
+              <PropertyRef Name="Id_inventario" />
+            </Principal>
+            <Dependent Role="productos_OrdenesCompra">
+              <PropertyRef Name="Id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="proveedores_ordenescompras_FK">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="0..1" />
+          <End Role="ordenesCompras" Type="Self.ordenesCompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="Id_proveedor" />
+            </Principal>
+            <Dependent Role="ordenesCompras">
+              <PropertyRef Name="Id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ADMModelStoreContainer">
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="contabilidad" EntityType="Self.contabilidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="cotizaciones" EntityType="Self.cotizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="factura" EntityType="Self.factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inventario" EntityType="Self.inventario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ordenesCompras" EntityType="Self.ordenesCompras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productos_Cotizaciones" EntityType="Self.productos_Cotizaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productos_factura" EntityType="Self.productos_factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productos_OrdenesCompra" EntityType="Self.productos_OrdenesCompra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Cliente_Factura_FK" Association="Self.Cliente_Factura_FK">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="factura" EntitySet="factura" />
+          </AssociationSet>
+          <AssociationSet Name="Cotizacion_Cotizaciones_FK" Association="Self.Cotizacion_Cotizaciones_FK">
+            <End Role="cotizaciones" EntitySet="cotizaciones" />
+            <End Role="productos_Cotizaciones" EntitySet="productos_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="Factura_factura_FK" Association="Self.Factura_factura_FK">
+            <End Role="factura" EntitySet="factura" />
+            <End Role="productos_factura" EntitySet="productos_factura" />
+          </AssociationSet>
+          <AssociationSet Name="ordenes_ordenescompras_FK" Association="Self.ordenes_ordenescompras_FK">
+            <End Role="ordenesCompras" EntitySet="ordenesCompras" />
+            <End Role="productos_OrdenesCompra" EntitySet="productos_OrdenesCompra" />
+          </AssociationSet>
+          <AssociationSet Name="productos_Cotizaciones_FK" Association="Self.productos_Cotizaciones_FK">
+            <End Role="inventario" EntitySet="inventario" />
+            <End Role="productos_Cotizaciones" EntitySet="productos_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="productos_factura_FK" Association="Self.productos_factura_FK">
+            <End Role="inventario" EntitySet="inventario" />
+            <End Role="productos_factura" EntitySet="productos_factura" />
+          </AssociationSet>
+          <AssociationSet Name="productos_ordenescompras_FK" Association="Self.productos_ordenescompras_FK">
+            <End Role="inventario" EntitySet="inventario" />
+            <End Role="productos_OrdenesCompra" EntitySet="productos_OrdenesCompra" />
+          </AssociationSet>
+          <AssociationSet Name="proveedores_ordenescompras_FK" Association="Self.proveedores_ordenescompras_FK">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="ordenesCompras" EntitySet="ordenesCompras" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ADMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="Id_cliente" />
+          </Key>
+          <Property Name="Id_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cedula" Type="Int32" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="facturas" Relationship="Self.Cliente_Factura_FK" FromRole="cliente" ToRole="factura" />
+        </EntityType>
+        <EntityType Name="contabilidad">
+          <Key>
+            <PropertyRef Name="Id_Contabilidad" />
+          </Key>
+          <Property Name="Id_Contabilidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gastos" Type="Int32" />
+          <Property Name="Ingresos" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="cotizacione">
+          <Key>
+            <PropertyRef Name="Id_cotizacion" />
+          </Key>
+          <Property Name="Id_cotizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Int32" />
+          <Property Name="Impuestos" Type="Int32" />
+          <Property Name="Monto_total" Type="Int32" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="productos_Cotizaciones" Relationship="Self.Cotizacion_Cotizaciones_FK" FromRole="cotizaciones" ToRole="productos_Cotizaciones" />
+        </EntityType>
+        <EntityType Name="factura">
+          <Key>
+            <PropertyRef Name="Id_factura" />
+          </Key>
+          <Property Name="Id_factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_cliente" Type="Int32" />
+          <Property Name="monto" Type="Int32" />
+          <Property Name="impuesto" Type="Int32" />
+          <Property Name="Monto_total" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cliente" Relationship="Self.Cliente_Factura_FK" FromRole="factura" ToRole="cliente" />
+          <NavigationProperty Name="productos_factura" Relationship="Self.Factura_factura_FK" FromRole="factura" ToRole="productos_factura" />
+        </EntityType>
+        <EntityType Name="inventario">
+          <Key>
+            <PropertyRef Name="Id_inventario" />
+          </Key>
+          <Property Name="Id_inventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Especificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Int32" />
+          <NavigationProperty Name="productos_Cotizaciones" Relationship="Self.productos_Cotizaciones_FK" FromRole="inventario" ToRole="productos_Cotizaciones" />
+          <NavigationProperty Name="productos_factura" Relationship="Self.productos_factura_FK" FromRole="inventario" ToRole="productos_factura" />
+          <NavigationProperty Name="productos_OrdenesCompra" Relationship="Self.productos_ordenescompras_FK" FromRole="inventario" ToRole="productos_OrdenesCompra" />
+        </EntityType>
+        <EntityType Name="ordenesCompra">
+          <Key>
+            <PropertyRef Name="Id_Orden_compra" />
+          </Key>
+          <Property Name="Id_Orden_compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_proveedor" Type="Int32" />
+          <Property Name="Estado" Type="Int32" />
+          <Property Name="Monto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Impuesto" Type="Int32" />
+          <Property Name="Monto_total" Type="Int32" />
+          <NavigationProperty Name="productos_OrdenesCompra" Relationship="Self.ordenes_ordenescompras_FK" FromRole="ordenesCompras" ToRole="productos_OrdenesCompra" />
+          <NavigationProperty Name="proveedore" Relationship="Self.proveedores_ordenescompras_FK" FromRole="ordenesCompras" ToRole="proveedores" />
+        </EntityType>
+        <EntityType Name="productos_Cotizaciones">
+          <Key>
+            <PropertyRef Name="Id_producto_cotizacion" />
+          </Key>
+          <Property Name="Id_producto_cotizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_inventario" Type="Int32" />
+          <Property Name="Id_cotizacion" Type="Int32" />
+          <Property Name="Cantidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cotizacione" Relationship="Self.Cotizacion_Cotizaciones_FK" FromRole="productos_Cotizaciones" ToRole="cotizaciones" />
+          <NavigationProperty Name="inventario" Relationship="Self.productos_Cotizaciones_FK" FromRole="productos_Cotizaciones" ToRole="inventario" />
+        </EntityType>
+        <EntityType Name="productos_factura">
+          <Key>
+            <PropertyRef Name="Id_producto_factura" />
+          </Key>
+          <Property Name="Id_producto_factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_inventario" Type="Int32" />
+          <Property Name="Id_cotizacion" Type="Int32" />
+          <Property Name="Cantidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="factura" Relationship="Self.Factura_factura_FK" FromRole="productos_factura" ToRole="factura" />
+          <NavigationProperty Name="inventario" Relationship="Self.productos_factura_FK" FromRole="productos_factura" ToRole="inventario" />
+        </EntityType>
+        <EntityType Name="productos_OrdenesCompra">
+          <Key>
+            <PropertyRef Name="Id_producto_orden_compra" />
+          </Key>
+          <Property Name="Id_producto_orden_compra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_producto" Type="Int32" />
+          <Property Name="Id_ordenesDeCopras" Type="Int32" />
+          <Property Name="Cantidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="inventario" Relationship="Self.productos_ordenescompras_FK" FromRole="productos_OrdenesCompra" ToRole="inventario" />
+          <NavigationProperty Name="ordenesCompra" Relationship="Self.ordenes_ordenescompras_FK" FromRole="productos_OrdenesCompra" ToRole="ordenesCompras" />
+        </EntityType>
+        <EntityType Name="proveedore">
+          <Key>
+            <PropertyRef Name="Id_proveedor" />
+          </Key>
+          <Property Name="Id_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RNC" Type="Int32" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ordenesCompras" Relationship="Self.proveedores_ordenescompras_FK" FromRole="proveedores" ToRole="ordenesCompras" />
+        </EntityType>
+        <Association Name="Cliente_Factura_FK">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+          <End Role="factura" Type="Self.factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="Id_cliente" />
+            </Principal>
+            <Dependent Role="factura">
+              <PropertyRef Name="Id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cotizacion_Cotizaciones_FK">
+          <End Role="cotizaciones" Type="Self.cotizacione" Multiplicity="0..1" />
+          <End Role="productos_Cotizaciones" Type="Self.productos_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cotizaciones">
+              <PropertyRef Name="Id_cotizacion" />
+            </Principal>
+            <Dependent Role="productos_Cotizaciones">
+              <PropertyRef Name="Id_cotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Factura_factura_FK">
+          <End Role="factura" Type="Self.factura" Multiplicity="0..1" />
+          <End Role="productos_factura" Type="Self.productos_factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="factura">
+              <PropertyRef Name="Id_factura" />
+            </Principal>
+            <Dependent Role="productos_factura">
+              <PropertyRef Name="Id_cotizacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_Cotizaciones_FK">
+          <End Role="inventario" Type="Self.inventario" Multiplicity="0..1" />
+          <End Role="productos_Cotizaciones" Type="Self.productos_Cotizaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventario">
+              <PropertyRef Name="Id_inventario" />
+            </Principal>
+            <Dependent Role="productos_Cotizaciones">
+              <PropertyRef Name="Id_inventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_factura_FK">
+          <End Role="inventario" Type="Self.inventario" Multiplicity="0..1" />
+          <End Role="productos_factura" Type="Self.productos_factura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventario">
+              <PropertyRef Name="Id_inventario" />
+            </Principal>
+            <Dependent Role="productos_factura">
+              <PropertyRef Name="Id_inventario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="productos_ordenescompras_FK">
+          <End Role="inventario" Type="Self.inventario" Multiplicity="0..1" />
+          <End Role="productos_OrdenesCompra" Type="Self.productos_OrdenesCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inventario">
+              <PropertyRef Name="Id_inventario" />
+            </Principal>
+            <Dependent Role="productos_OrdenesCompra">
+              <PropertyRef Name="Id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ordenes_ordenescompras_FK">
+          <End Role="ordenesCompras" Type="Self.ordenesCompra" Multiplicity="0..1" />
+          <End Role="productos_OrdenesCompra" Type="Self.productos_OrdenesCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ordenesCompras">
+              <PropertyRef Name="Id_Orden_compra" />
+            </Principal>
+            <Dependent Role="productos_OrdenesCompra">
+              <PropertyRef Name="Id_ordenesDeCopras" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="proveedores_ordenescompras_FK">
+          <End Role="proveedores" Type="Self.proveedore" Multiplicity="0..1" />
+          <End Role="ordenesCompras" Type="Self.ordenesCompra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="Id_proveedor" />
+            </Principal>
+            <Dependent Role="ordenesCompras">
+              <PropertyRef Name="Id_proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ADMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clientes" EntityType="Self.cliente" />
+          <EntitySet Name="contabilidads" EntityType="Self.contabilidad" />
+          <EntitySet Name="cotizaciones" EntityType="Self.cotizacione" />
+          <EntitySet Name="facturas" EntityType="Self.factura" />
+          <EntitySet Name="inventarios" EntityType="Self.inventario" />
+          <EntitySet Name="ordenesCompras" EntityType="Self.ordenesCompra" />
+          <EntitySet Name="productos_Cotizaciones" EntityType="Self.productos_Cotizaciones" />
+          <EntitySet Name="productos_factura" EntityType="Self.productos_factura" />
+          <EntitySet Name="productos_OrdenesCompra" EntityType="Self.productos_OrdenesCompra" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedore" />
+          <AssociationSet Name="Cliente_Factura_FK" Association="Self.Cliente_Factura_FK">
+            <End Role="cliente" EntitySet="clientes" />
+            <End Role="factura" EntitySet="facturas" />
+          </AssociationSet>
+          <AssociationSet Name="Cotizacion_Cotizaciones_FK" Association="Self.Cotizacion_Cotizaciones_FK">
+            <End Role="cotizaciones" EntitySet="cotizaciones" />
+            <End Role="productos_Cotizaciones" EntitySet="productos_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="Factura_factura_FK" Association="Self.Factura_factura_FK">
+            <End Role="factura" EntitySet="facturas" />
+            <End Role="productos_factura" EntitySet="productos_factura" />
+          </AssociationSet>
+          <AssociationSet Name="productos_Cotizaciones_FK" Association="Self.productos_Cotizaciones_FK">
+            <End Role="inventario" EntitySet="inventarios" />
+            <End Role="productos_Cotizaciones" EntitySet="productos_Cotizaciones" />
+          </AssociationSet>
+          <AssociationSet Name="productos_factura_FK" Association="Self.productos_factura_FK">
+            <End Role="inventario" EntitySet="inventarios" />
+            <End Role="productos_factura" EntitySet="productos_factura" />
+          </AssociationSet>
+          <AssociationSet Name="productos_ordenescompras_FK" Association="Self.productos_ordenescompras_FK">
+            <End Role="inventario" EntitySet="inventarios" />
+            <End Role="productos_OrdenesCompra" EntitySet="productos_OrdenesCompra" />
+          </AssociationSet>
+          <AssociationSet Name="ordenes_ordenescompras_FK" Association="Self.ordenes_ordenescompras_FK">
+            <End Role="ordenesCompras" EntitySet="ordenesCompras" />
+            <End Role="productos_OrdenesCompra" EntitySet="productos_OrdenesCompra" />
+          </AssociationSet>
+          <AssociationSet Name="proveedores_ordenescompras_FK" Association="Self.proveedores_ordenescompras_FK">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="ordenesCompras" EntitySet="ordenesCompras" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ADMModelStoreContainer" CdmEntityContainer="ADMEntities">
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="ADMModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="Id_cliente" ColumnName="Id_cliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contabilidads">
+            <EntityTypeMapping TypeName="ADMModel.contabilidad">
+              <MappingFragment StoreEntitySet="contabilidad">
+                <ScalarProperty Name="Id_Contabilidad" ColumnName="Id_Contabilidad" />
+                <ScalarProperty Name="Gastos" ColumnName="Gastos" />
+                <ScalarProperty Name="Ingresos" ColumnName="Ingresos" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cotizaciones">
+            <EntityTypeMapping TypeName="ADMModel.cotizacione">
+              <MappingFragment StoreEntitySet="cotizaciones">
+                <ScalarProperty Name="Id_cotizacion" ColumnName="Id_cotizacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+                <ScalarProperty Name="Monto_total" ColumnName="Monto_total" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facturas">
+            <EntityTypeMapping TypeName="ADMModel.factura">
+              <MappingFragment StoreEntitySet="factura">
+                <ScalarProperty Name="Id_factura" ColumnName="Id_factura" />
+                <ScalarProperty Name="Id_cliente" ColumnName="Id_cliente" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="impuesto" ColumnName="impuesto" />
+                <ScalarProperty Name="Monto_total" ColumnName="Monto_total" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventarios">
+            <EntityTypeMapping TypeName="ADMModel.inventario">
+              <MappingFragment StoreEntitySet="inventario">
+                <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Especificacion" ColumnName="Especificacion" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordenesCompras">
+            <EntityTypeMapping TypeName="ADMModel.ordenesCompra">
+              <MappingFragment StoreEntitySet="ordenesCompras">
+                <ScalarProperty Name="Id_Orden_compra" ColumnName="Id_Orden_compra" />
+                <ScalarProperty Name="Id_proveedor" ColumnName="Id_proveedor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Monto_total" ColumnName="Monto_total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos_Cotizaciones">
+            <EntityTypeMapping TypeName="ADMModel.productos_Cotizaciones">
+              <MappingFragment StoreEntitySet="productos_Cotizaciones">
+                <ScalarProperty Name="Id_producto_cotizacion" ColumnName="Id_producto_cotizacion" />
+                <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+                <ScalarProperty Name="Id_cotizacion" ColumnName="Id_cotizacion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos_factura">
+            <EntityTypeMapping TypeName="ADMModel.productos_factura">
+              <MappingFragment StoreEntitySet="productos_factura">
+                <ScalarProperty Name="Id_producto_factura" ColumnName="Id_producto_factura" />
+                <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+                <ScalarProperty Name="Id_cotizacion" ColumnName="Id_cotizacion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos_OrdenesCompra">
+            <EntityTypeMapping TypeName="ADMModel.productos_OrdenesCompra">
+              <MappingFragment StoreEntitySet="productos_OrdenesCompra">
+                <ScalarProperty Name="Id_producto_orden_compra" ColumnName="Id_producto_orden_compra" />
+                <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+                <ScalarProperty Name="Id_ordenesDeCopras" ColumnName="Id_ordenesDeCopras" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedores">
+            <EntityTypeMapping TypeName="ADMModel.proveedore">
+              <MappingFragment StoreEntitySet="proveedores">
+                <ScalarProperty Name="Id_proveedor" ColumnName="Id_proveedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

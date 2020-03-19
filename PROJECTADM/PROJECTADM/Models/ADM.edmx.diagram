@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5986e6cf4f5d4c4eb1981d50a6347a78" Name="Diagram1">
+        <EntityTypeShape EntityType="ADMModel.cliente" Width="1.5" PointX="1.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.contabilidad" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.cotizacione" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.factura" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.inventario" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.ordenesCompra" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.productos_Cotizaciones" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.productos_factura" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.productos_OrdenesCompra" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADMModel.proveedore" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
+        <AssociationConnector Association="ADMModel.Cliente_Factura_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMModel.Cotizacion_Cotizaciones_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMModel.Factura_factura_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMModel.productos_Cotizaciones_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMModel.productos_factura_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMModel.productos_ordenescompras_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMModel.ordenes_ordenescompras_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="ADMModel.proveedores_ordenescompras_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

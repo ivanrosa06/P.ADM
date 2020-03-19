@@ -1,0 +1,42 @@
+﻿@model PROJECTADM.Models.productos_Cotizaciones
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detailles</h2>
+
+<div>
+    <h4>Productos Cotizaciones</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cotizacione.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cotizacione.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inventario.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inventario.Marca)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_producto_cotizacion }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "IndexOrdenCompra";
+}
+
+<h1>Ordenes Compras</h1>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            <div class="form-group">
+                <h4>Registro Proveedor</h4>
+                <br />
+                <img src="~/images/036-human-resources-4.png" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Registro Proveedor", "Create", "proveedores",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+                <h4>Consultar Proveedor</h4>
+                <br />
+                <img src="~/images/019-statistics-1.png" "" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Consulta proveedor", "Index", "proveedores",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+
+                <h4>Registrar Ordenes de compras</h4>
+                <br />
+                <img src="~/images/008-account.png" "" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Registrar Ordenes de Compras", "Create", "ordenesCompras",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+        <th>
+            <div class="form-group">
+                <h4>Consultar Ordenes de compras</h4>
+                <br />
+                <img src="~/images/025-report.png" "" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Consultar Ordenes de Compras", "Index", "ordenesCompras",null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+      
+    </tr>
+</table>
+
+
+

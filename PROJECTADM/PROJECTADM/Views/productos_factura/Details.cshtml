@@ -1,0 +1,42 @@
+﻿@model PROJECTADM.Models.productos_factura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Productos Factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.factura.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.factura.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.inventario.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inventario.Marca)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_producto_factura },new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Regresar", "Index",null,new { @class = "btn btn-danger" })
+</p>

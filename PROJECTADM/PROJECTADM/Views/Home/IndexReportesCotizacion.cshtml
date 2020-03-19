@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "IndexReportesCotizacion";
+}
+
+<h2>Reportes de Cotizaciones</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            <div class="form-group">
+                <h4>Reportes Cotizacion</h4>
+                <br />
+                <img src="~/images/008-account.png" alt="Perfil" width="120" height="120" border="3" />
+                @Html.ActionLink("Imprimir", "ExportCotizaciones", "cotizaciones", null, new { @class = "btn btn-danger" })
+            </div>
+        </th>
+       
+        <th></th>
+    </tr>
+</table>

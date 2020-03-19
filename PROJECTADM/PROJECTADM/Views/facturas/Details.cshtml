@@ -1,0 +1,58 @@
+﻿@model PROJECTADM.Models.factura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_factura },new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Regresar", "Index",null,new { @class = "btn btn-danger" })
+</p>

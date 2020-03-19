@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ADMModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="FacturaCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_cotizacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FacturaCotizacion2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_cotizacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FacturaCotizacion3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_cotizacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FacturaOrdenes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Orden_compra" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Facturaordenes2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Orden_compra" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Facturaordenes3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Orden_compra" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ADMModel1StoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ADMModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ADMEntities3" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="FacturaCotizacion" ReturnType="Collection(ADMModel1.FacturaCotizacion_Result)">
+            <Parameter Name="Id_cotizacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FacturaCotizacion2" ReturnType="Collection(ADMModel1.FacturaCotizacion2_Result)">
+            <Parameter Name="Id_cotizacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FacturaCotizacion3" ReturnType="Collection(ADMModel1.FacturaCotizacion3_Result)">
+            <Parameter Name="Id_cotizacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="FacturaOrdenes" ReturnType="Collection(ADMModel1.FacturaOrdenes_Result)">
+            <Parameter Name="Id_Orden_compra" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Facturaordenes2" ReturnType="Collection(ADMModel1.Facturaordenes2_Result)">
+            <Parameter Name="Id_Orden_compra" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Facturaordenes3" ReturnType="Collection(ADMModel1.Facturaordenes3_Result)">
+            <Parameter Name="Id_Orden_compra" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="FacturaCotizacion_Result">
+          <Property Type="Int32" Name="Id_producto_cotizacion" Nullable="false" />
+          <Property Type="Int32" Name="Id_inventario" Nullable="true" />
+          <Property Type="Int32" Name="Id_cotizacion" Nullable="true" />
+          <Property Type="String" Name="Cantidad" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_cotizacion1" Nullable="true" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Monto" Nullable="true" />
+          <Property Type="Int32" Name="Impuestos" Nullable="true" />
+          <Property Type="Int32" Name="Monto_total" Nullable="true" />
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="FacturaCotizacion2_Result">
+          <Property Type="Int32" Name="Id_producto_cotizacion" Nullable="false" />
+          <Property Type="Int32" Name="Id_inventario" Nullable="true" />
+          <Property Type="Int32" Name="Id_cotizacion" Nullable="true" />
+          <Property Type="String" Name="Cantidad" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="FacturaCotizacion3_Result">
+          <Property Type="Int32" Name="Id_cotizacion" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Monto" Nullable="true" />
+          <Property Type="Int32" Name="Impuestos" Nullable="true" />
+          <Property Type="Int32" Name="Monto_total" Nullable="true" />
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="FacturaOrdenes_Result">
+          <Property Type="Int32" Name="Id_producto_orden_compra" Nullable="false" />
+          <Property Type="Int32" Name="Id_producto" Nullable="true" />
+          <Property Type="Int32" Name="Id_ordenesDeCopras" Nullable="true" />
+          <Property Type="String" Name="Cantidad" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Id_Orden_compra" Nullable="true" />
+          <Property Type="Int32" Name="Id_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="Estado" Nullable="true" />
+          <Property Type="String" Name="Monto" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Impuesto" Nullable="true" />
+          <Property Type="Int32" Name="Monto_total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Facturaordenes2_Result">
+          <Property Type="Int32" Name="Id_producto_orden_compra" Nullable="false" />
+          <Property Type="Int32" Name="Id_producto" Nullable="true" />
+          <Property Type="Int32" Name="Id_ordenesDeCopras" Nullable="true" />
+          <Property Type="String" Name="Cantidad" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Facturaordenes3_Result">
+          <Property Type="Int32" Name="Id_Orden_compra" Nullable="false" />
+          <Property Type="Int32" Name="Id_proveedor" Nullable="true" />
+          <Property Type="Int32" Name="Estado" Nullable="true" />
+          <Property Type="String" Name="Monto" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Impuesto" Nullable="true" />
+          <Property Type="Int32" Name="Monto_total" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ADMModel1StoreContainer" CdmEntityContainer="ADMEntities3" >
+          <FunctionImportMapping FunctionImportName="FacturaCotizacion" FunctionName="ADMModel1.Store.FacturaCotizacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ADMModel1.FacturaCotizacion_Result">
+                <ScalarProperty Name="Id_producto_cotizacion" ColumnName="Id_producto_cotizacion" />
+                <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+                <ScalarProperty Name="Id_cotizacion" ColumnName="Id_cotizacion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Id_cotizacion1" ColumnName="Id_cotizacion1" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+                <ScalarProperty Name="Monto_total" ColumnName="Monto_total" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FacturaCotizacion2" FunctionName="ADMModel1.Store.FacturaCotizacion2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ADMModel1.FacturaCotizacion2_Result">
+                <ScalarProperty Name="Id_producto_cotizacion" ColumnName="Id_producto_cotizacion" />
+                <ScalarProperty Name="Id_inventario" ColumnName="Id_inventario" />
+                <ScalarProperty Name="Id_cotizacion" ColumnName="Id_cotizacion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FacturaCotizacion3" FunctionName="ADMModel1.Store.FacturaCotizacion3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ADMModel1.FacturaCotizacion3_Result">
+                <ScalarProperty Name="Id_cotizacion" ColumnName="Id_cotizacion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Impuestos" ColumnName="Impuestos" />
+                <ScalarProperty Name="Monto_total" ColumnName="Monto_total" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FacturaOrdenes" FunctionName="ADMModel1.Store.FacturaOrdenes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ADMModel1.FacturaOrdenes_Result">
+                <ScalarProperty Name="Id_producto_orden_compra" ColumnName="Id_producto_orden_compra" />
+                <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+                <ScalarProperty Name="Id_ordenesDeCopras" ColumnName="Id_ordenesDeCopras" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Id_Orden_compra" ColumnName="Id_Orden_compra" />
+                <ScalarProperty Name="Id_proveedor" ColumnName="Id_proveedor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Monto_total" ColumnName="Monto_total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Facturaordenes2" FunctionName="ADMModel1.Store.Facturaordenes2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ADMModel1.Facturaordenes2_Result">
+                <ScalarProperty Name="Id_producto_orden_compra" ColumnName="Id_producto_orden_compra" />
+                <ScalarProperty Name="Id_producto" ColumnName="Id_producto" />
+                <ScalarProperty Name="Id_ordenesDeCopras" ColumnName="Id_ordenesDeCopras" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Facturaordenes3" FunctionName="ADMModel1.Store.Facturaordenes3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ADMModel1.Facturaordenes3_Result">
+                <ScalarProperty Name="Id_Orden_compra" ColumnName="Id_Orden_compra" />
+                <ScalarProperty Name="Id_proveedor" ColumnName="Id_proveedor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="Monto_total" ColumnName="Monto_total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

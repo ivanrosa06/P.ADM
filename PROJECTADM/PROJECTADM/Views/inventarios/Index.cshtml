@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PROJECTADM.Models.inventario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Inventario</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create", null, new { @class = "btn btn-danger" })
+</p>
+@using (Html.BeginForm("Index", "productos_Cotizaciones", FormMethod.Post))
+{
+
+    <div class="form-group pull-right">
+        @Html.Label("Buscar por nombre:", htmlAttributes: new { @class = "control-label col-md-4" })
+
+        @Html.Editor("busqueda1")
+        <input type="submit" value="Buscar" class="btn btn-danger" />
+
+        @*@Html.ValidationMessageFor(model => model.Año, "", new { @class = "text-danger" })*@
+
+
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Marca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Especificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Especificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id_inventario }, new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_inventario }, new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_inventario }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Imprimir Reporte", "ExportInventario", "inventarios", null, new { @class = "btn btn-danger" })

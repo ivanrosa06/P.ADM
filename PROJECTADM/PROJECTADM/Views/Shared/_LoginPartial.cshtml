@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-11">
+        <a >MODULOS</a>
+        <ul class="sub-menu">
+            <li id="menu-item-40" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40"> @Html.ActionLink("Inventario", "Index", "inventarios")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Facturacion", "IndexFacturacion", "Home")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Cotizacion", "IndexCotizacion", "Home")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Ordenes de Compras", "IndexOrdenCompra", "Home")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Cuentas por Cobrar", "Index2", "facturas")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Cuentas por Pagar", "Index2", "ordenesCompras")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Contabilidad", "IndexContabilidad", "Home")</li>
+
+
+        </ul>
+    </li>
+
+    <li id="menu-item-15" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-15">
+        <a href="/servicios/">REPORTES</a>
+        <ul class="sub-menu">
+            <li id="menu-item-40" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-40">@Html.ActionLink("Inventario", "ExportInventario", "inventarios")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Facturacion", "IndexReporteFacturacion", "Home")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Cotizaciones", "IndexReportesCotizacion", "Home")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Ordenes de compras", "IndexReporteOrdenCompra", "Home")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Cuentas Por cobrar", "ExportFacturacion", "facturas")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Cuentas Por Pagar", "ExportOrdenes", "ordenesCompras")</li>
+            <li id="menu-item-12995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12995">@Html.ActionLink("Contabilidad", "IndexReportesContabilidad", "Home")</li>
+
+
+        </ul>
+    </li>
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13549">
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13549"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+
+    }
+}
+else
+{
+
+    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13549">@Html.ActionLink("REGISTRATE", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) </li>
+    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13549">@Html.ActionLink("LOG IN", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+}

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PROJECTADM.Models.factura>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Factura</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-danger" })
+</p>
+@using (Html.BeginForm("Index", "productos_Cotizaciones", FormMethod.Post))
+{
+
+    <div class="form-group pull-right">
+        @Html.Label("Buscar por nombre:", htmlAttributes: new { @class = "control-label col-md-4" })
+
+        @Html.Editor("busqueda1")
+        <input type="submit" value="Buscar" class="btn btn-danger" />
+
+        @*@Html.ValidationMessageFor(model => model.Año, "", new { @class = "text-danger" })*@
+
+
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto_total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.impuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto_total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cliente.Nombre)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.Id_factura }, new { @class = "btn btn-danger" }) |
+
+            </td>
+        </tr>
+    }
+
+</table>
