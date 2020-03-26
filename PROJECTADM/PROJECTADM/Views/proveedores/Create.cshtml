@@ -4,12 +4,15 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Crear</h2>
+<h2>Aqui vamos a registrar los datos de los nuevos Proveedores</h2>
 
-@using (Html.BeginForm()) 
+<br />
+
+<br />
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>proveedores</h4>
         <hr />
@@ -71,5 +74,5 @@
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index",null,new { @class = "btn btn-danger" })
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-danger" })
 </div>

@@ -4,8 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Proveedores</h2>
+<h2>Aqui puedes visualizar  los datos de los nuevos Proveedores</h2>
 
+<br />
+<br />
 <p>
     @Html.ActionLink("Registrar", "Create", null, new { @class = "btn btn-danger" })
 </p>
@@ -76,4 +78,4 @@
     }
 
 </table>
-<input type="submit" value="Salir" class="btn btn-danger" />
+@Html.ActionLink("salir", "IndexOrdenCompra", "Home", null, new { @class = "btn btn-danger" })

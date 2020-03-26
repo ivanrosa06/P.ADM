@@ -4,62 +4,66 @@
     ViewBag.Title = "Index";
 }
 
-<h1>Contabilidad</h1>
-Gastos
-<h2>@ViewBag.Gastos</h2>
-Ingresos
-<h2>
-    @ViewBag.Ingresos
-</h2>
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-danger" })
-</p>
-@using (Html.BeginForm("Index", "productos_Cotizaciones", FormMethod.Post))
-{
-
-    <div class="form-group pull-right">
-        @Html.Label("Buscar por nombre:", htmlAttributes: new { @class = "control-label col-md-4" })
-
-        @Html.Editor("busqueda1")
-        <input type="submit" value="Buscar" class="btn btn-danger" />
-
-        @*@Html.ValidationMessageFor(model => model.Año, "", new { @class = "text-danger" })*@
-
-
-    </div>
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Gastos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ingresos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+<h1>Aqui vemos cada uno de los datos de la Contabilidad</h1>
+<br/>
+<h1 class="text-info">Gastos</h1>
+    <h2>@ViewBag.Gastos</h2>
+    <br />
+    <h1 class="text-info">Ingresos</h1>
+    <h2>
+        @ViewBag.Ingresos
+    </h2>
+    <br />
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-danger" })
+    </p>
+    @using (Html.BeginForm("Index", "productos_Cotizaciones", FormMethod.Post))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gastos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ingresos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id_Contabilidad }, new { @class = "btn btn-danger" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id_Contabilidad }, new { @class = "btn btn-danger" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id_Contabilidad }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
-    }
 
-</table>
+        <div class="form-group pull-right">
+            @Html.Label("Buscar por nombre:", htmlAttributes: new { @class = "control-label col-md-4" })
+
+            @Html.Editor("busqueda1")
+            <input type="submit" value="Buscar" class="btn btn-danger" />
+
+            @*@Html.ValidationMessageFor(model => model.Año, "", new { @class = "text-danger" })*@
+
+
+        </div>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gastos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingresos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gastos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingresos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id_Contabilidad }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id_Contabilidad }, new { @class = "btn btn-danger" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id_Contabilidad }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.ActionLink("Atras", "IndexContabilidad", "Home", null, new { @class = "btn btn-danger" })
