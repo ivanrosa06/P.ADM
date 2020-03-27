@@ -62,7 +62,7 @@ namespace PROJECTADM.Controllers
             {
                 db.facturas.Add(factura);
                 db.SaveChanges();
-                return RedirectToAction("Index","productos_factura",null);
+                return RedirectToAction("Index","productos_factura", new { id = factura.Id_factura });
             }
 
             ViewBag.Id_cliente = new SelectList(db.clientes, "Id_cliente", "Nombre", factura.Id_cliente);

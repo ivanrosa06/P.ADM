@@ -15,12 +15,12 @@ namespace PROJECTADM.Controllers
         private ADMEntities db = new ADMEntities();
 
         // GET: productos_OrdenesCompra
-        public ActionResult Index(Models.parametros par)
+        public ActionResult Index(int? id)
         {
             
             var productos_OrdenesCompra = db.productos_OrdenesCompra.Include(p => p.inventario).Include(p => p.ordenesCompra);
-            int orden = 9;
-            var productosEspecificos = from data in db.productos_OrdenesCompra where data.Id_ordenesDeCopras == orden select data;
+            
+            var productosEspecificos = from data in db.productos_OrdenesCompra where data.Id_ordenesDeCopras == id select data;
             return View(productosEspecificos.ToList());
         }
 
@@ -72,7 +72,7 @@ namespace PROJECTADM.Controllers
                 query.Monto_total = Convert.ToInt32(query.Monto) + query.Impuesto;
                 db.productos_OrdenesCompra.Add(productos_OrdenesCompra);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = productos_OrdenesCompra.Id_ordenesDeCopras });
             }
 
             ViewBag.Id_producto = new SelectList(db.inventarios, "Id_inventario", "Marca", productos_OrdenesCompra.Id_producto);
@@ -108,7 +108,7 @@ namespace PROJECTADM.Controllers
             {
                 db.Entry(productos_OrdenesCompra).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = productos_OrdenesCompra.Id_ordenesDeCopras });
             }
             ViewBag.Id_producto = new SelectList(db.inventarios, "Id_inventario", "Marca", productos_OrdenesCompra.Id_producto);
             ViewBag.Id_ordenesDeCopras = new SelectList(db.ordenesCompras, "Id_Orden_compra", "Monto", productos_OrdenesCompra.Id_ordenesDeCopras);
@@ -138,7 +138,7 @@ namespace PROJECTADM.Controllers
             productos_OrdenesCompra productos_OrdenesCompra = db.productos_OrdenesCompra.Find(id);
             db.productos_OrdenesCompra.Remove(productos_OrdenesCompra);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = productos_OrdenesCompra.Id_ordenesDeCopras });
         }
 
         protected override void Dispose(bool disposing)

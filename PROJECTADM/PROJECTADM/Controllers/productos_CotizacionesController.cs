@@ -15,20 +15,21 @@ namespace PROJECTADM.Controllers
         private ADMEntities db = new ADMEntities();
 
         // GET: productos_Cotizaciones
-        public ActionResult Index(string busqueda1)
+        public ActionResult Index(int? id, string busqueda1)
         {
-            int orden = 9;
-            var productosEspecificos = from data in db.productos_Cotizaciones where data.Id_producto_cotizacion == orden select data;
+
+           
+            var productosEspecificos = from data in db.productos_Cotizaciones where data.Id_cotizacion == id select data;
             var productos_Cotizaciones = db.productos_Cotizaciones.Include(p => p.cotizacione).Include(p => p.inventario);
             var Lista = from data in db.productos_Cotizaciones select data;
             if (string.IsNullOrEmpty(busqueda1))
             {
-                return View(productos_Cotizaciones.ToList());
+                return View(productosEspecificos.ToList());
             }
             else
             {
                 Lista = Lista.Where(a => a.Id_cotizacion.Equals(Convert.ToInt32(busqueda1)));
-                return View(Lista);
+                return View(productosEspecificos.ToList());
 
             }
 
@@ -84,7 +85,8 @@ namespace PROJECTADM.Controllers
                 db.productos_Cotizaciones.Add(productos_Cotizaciones);
 
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = productos_Cotizaciones.Id_cotizacion });
+                
             }
 
             ViewBag.Id_cotizacion = new SelectList(db.cotizaciones, "Id_cotizacion", "Nombre", productos_Cotizaciones.Id_cotizacion);
@@ -120,7 +122,7 @@ namespace PROJECTADM.Controllers
             {
                 db.Entry(productos_Cotizaciones).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = productos_Cotizaciones.Id_cotizacion });
             }
             ViewBag.Id_cotizacion = new SelectList(db.cotizaciones, "Id_cotizacion", "Nombre", productos_Cotizaciones.Id_cotizacion);
             ViewBag.Id_inventario = new SelectList(db.inventarios, "Id_inventario", "Marca", productos_Cotizaciones.Id_inventario);
@@ -150,7 +152,7 @@ namespace PROJECTADM.Controllers
             productos_Cotizaciones productos_Cotizaciones = db.productos_Cotizaciones.Find(id);
             db.productos_Cotizaciones.Remove(productos_Cotizaciones);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = productos_Cotizaciones.Id_cotizacion });
         }
 
         protected override void Dispose(bool disposing)

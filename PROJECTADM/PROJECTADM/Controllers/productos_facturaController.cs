@@ -15,10 +15,10 @@ namespace PROJECTADM.Controllers
         private ADMEntities db = new ADMEntities();
 
         // GET: productos_factura
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             int orden = 1;
-            var productosEspecificos = from data in db.productos_factura where data.Id_cotizacion == orden select data;
+            var productosEspecificos = from data in db.productos_factura where data.Id_cotizacion == id select data;
             var productos_factura = db.productos_factura.Include(p => p.factura).Include(p => p.inventario);
             return View(productosEspecificos.ToList());
         }
@@ -69,7 +69,7 @@ namespace PROJECTADM.Controllers
                 query.Monto_total = Convert.ToInt32(query.monto) + query.monto;
                 db.productos_factura.Add(productos_factura);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = productos_factura.Id_cotizacion });
             }
 
             ViewBag.Id_cotizacion = new SelectList(db.facturas, "Id_factura", "Estado", productos_factura.Id_cotizacion);
@@ -105,7 +105,7 @@ namespace PROJECTADM.Controllers
             {
                 db.Entry(productos_factura).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = productos_factura.Id_cotizacion });
             }
             ViewBag.Id_cotizacion = new SelectList(db.facturas, "Id_factura", "Estado", productos_factura.Id_cotizacion);
             ViewBag.Id_inventario = new SelectList(db.inventarios, "Id_inventario", "Marca", productos_factura.Id_inventario);
@@ -135,7 +135,7 @@ namespace PROJECTADM.Controllers
             productos_factura productos_factura = db.productos_factura.Find(id);
             db.productos_factura.Remove(productos_factura);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { id = productos_factura.Id_cotizacion });
         }
 
         protected override void Dispose(bool disposing)

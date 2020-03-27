@@ -64,7 +64,7 @@ namespace PROJECTADM.Controllers
                 db.SaveChanges();
                 par.Orden = ordenesCompra.Id_Orden_compra;
                 Console.WriteLine(par.Orden);
-                return RedirectToAction("Index", "productos_OrdenesCompra");
+                return RedirectToAction("Index", "productos_OrdenesCompra", new { id = ordenesCompra.Id_Orden_compra });
                
             }
 
@@ -173,7 +173,7 @@ namespace PROJECTADM.Controllers
 
                         select data;
 
-            rd.SetDataSource(lista.ToList());
+            //rd.SetDataSource(lista.ToList());
 
 
 
@@ -194,7 +194,7 @@ namespace PROJECTADM.Controllers
 
 
             ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Reporte"), "OrdenesCompraFactura.rpt"));
+            rd.Load(Path.Combine(Server.MapPath("~/Reporte"), "OrdenCompraFactura.rpt"));
 
             var lista = from data in db.proveedores
 

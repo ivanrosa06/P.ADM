@@ -8,8 +8,9 @@
 <br />
 <br />
 <p>
-    <a href="/productos_Cotizaciones/Create" class="btn btn-danger">Agregar otro producto</a>
+    @Html.ActionLink("Agregar otro producto", "Create", null, new { @class = "btn btn-danger" })
 </p>
+
 @using (Html.BeginForm("Index", "productos_Cotizaciones", FormMethod.Post))
 {
 
@@ -20,7 +21,7 @@
         <input type="submit" value="Buscar" class="btn btn-danger" />
 
         @*@Html.ValidationMessageFor(model => model.Año, "", new { @class = "text-danger" })*@
-        <a href="~/Views/productos_Cotizaciones/Index.cshtml">~/Views/productos_Cotizaciones/Index.cshtml</a>
+       
 
 
     </div>
