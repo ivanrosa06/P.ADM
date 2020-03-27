@@ -19,7 +19,7 @@ namespace PROJECTADM.Controllers
         {
             
             var productos_OrdenesCompra = db.productos_OrdenesCompra.Include(p => p.inventario).Include(p => p.ordenesCompra);
-            int orden = 9;
+            int orden = 16;
             var productosEspecificos = from data in db.productos_OrdenesCompra where data.Id_ordenesDeCopras == orden select data;
             return View(productosEspecificos.ToList());
         }

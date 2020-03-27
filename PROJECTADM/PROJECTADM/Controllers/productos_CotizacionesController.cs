@@ -17,18 +17,18 @@ namespace PROJECTADM.Controllers
         // GET: productos_Cotizaciones
         public ActionResult Index(string busqueda1)
         {
-            int orden = 9;
+            int orden = 20;
             var productosEspecificos = from data in db.productos_Cotizaciones where data.Id_producto_cotizacion == orden select data;
             var productos_Cotizaciones = db.productos_Cotizaciones.Include(p => p.cotizacione).Include(p => p.inventario);
             var Lista = from data in db.productos_Cotizaciones select data;
             if (string.IsNullOrEmpty(busqueda1))
             {
-                return View(productos_Cotizaciones.ToList());
+                return View(productosEspecificos.ToList());
             }
             else
             {
                 Lista = Lista.Where(a => a.Id_cotizacion.Equals(Convert.ToInt32(busqueda1)));
-                return View(Lista);
+                return View(productosEspecificos.ToList());
 
             }
 
