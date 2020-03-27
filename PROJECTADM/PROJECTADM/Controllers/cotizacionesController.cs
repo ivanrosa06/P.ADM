@@ -57,9 +57,12 @@ namespace PROJECTADM.Controllers
         {
             if (ModelState.IsValid)
             {
+                parametros parametros = new parametros();
+                parametros.Cotizacion = cotizacione.Id_cotizacion;
                 db.cotizaciones.Add(cotizacione);
                 db.SaveChanges();
-                return RedirectToAction("Index", "productos_Cotizaciones");
+                return RedirectToAction("Index", "productos_Cotizaciones", new { id = cotizacione.Id_cotizacion });
+               
             }
 
             return View(cotizacione);

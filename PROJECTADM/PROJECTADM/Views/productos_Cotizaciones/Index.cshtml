@@ -8,8 +8,9 @@
 <br />
 <br />
 <p>
-    <a href="/productos_Cotizaciones/Create" class="btn btn-danger">Agregar otro producto</a>
+    @Html.ActionLink("Agregar otro producto", "Create", null, new { @class = "btn btn-danger" })
 </p>
+
 @using (Html.BeginForm("Index", "productos_Cotizaciones", FormMethod.Post))
 {
 

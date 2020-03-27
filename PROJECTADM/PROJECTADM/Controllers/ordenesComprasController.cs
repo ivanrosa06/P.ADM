@@ -64,7 +64,7 @@ namespace PROJECTADM.Controllers
                 db.SaveChanges();
                 par.Orden = ordenesCompra.Id_Orden_compra;
                 Console.WriteLine(par.Orden);
-                return RedirectToAction("Index", "productos_OrdenesCompra");
+                return RedirectToAction("Index", "productos_OrdenesCompra", new { id = ordenesCompra.Id_Orden_compra });
                
             }
 
