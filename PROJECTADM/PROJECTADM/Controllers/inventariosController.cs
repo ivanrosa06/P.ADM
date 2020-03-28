@@ -118,9 +118,7 @@ namespace PROJECTADM.Controllers
         }
         public ActionResult ExportInventario()
         {
-            List<ordenesCompra> allOrdenes = new List<ordenesCompra>();
-            allOrdenes = db.ordenesCompras.ToList();
-
+          
 
             ReportDocument rd = new ReportDocument();
             rd.Load(Path.Combine(Server.MapPath("~/Reporte"), "inventario.rpt"));
